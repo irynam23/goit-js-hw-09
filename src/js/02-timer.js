@@ -35,6 +35,10 @@ function onStartButtonClick() {
   startButton.disabled = true;
   timer = setInterval(() => {
     const currentTime = Date.now();
+    if (choosenTime <= currentTime) {
+      clearInterval(timer);
+      return;
+    }
     const deltaTime = choosenTime - currentTime;
     const convertedTime = convertMs(deltaTime);
     days.textContent = convertedTime.days;
